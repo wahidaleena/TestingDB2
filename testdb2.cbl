@@ -33,7 +33,7 @@ IDENTIFICATION DIVISION.
         END-EXEC.
 
       1000-INITIALIZE-PARA.
-	      EXEC SQL
+       EXEC SQL
             SELECT   USERID
             INTO    RTL_USERID
             FROM     MERT RTL,
@@ -122,7 +122,7 @@ IDENTIFICATION DIVISION.
 
 
 
-        END-EXEC.
+       END-EXEC.
 		
 	  2000-INITIALIZE-PARA.
 	   EXEC SQL
@@ -143,7 +143,7 @@ IDENTIFICATION DIVISION.
                 AND  AD_SELECT    = :HV-AD-SELECT)
                 QUERYNO  74
 
-     END-EXEC.
+           END-EXEC.
 
       
 
