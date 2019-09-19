@@ -32,6 +32,13 @@
 
         END-EXEC.
 
+       EXEC SQL
+            FETCH    FOODSTMP_S
+            INTO    :CPN_ROG,
+                    :CPN_CPN_ADJ_IND
+
+            END-EXEC.
+
        1000-INITIALIZE-PARA.
        EXEC SQL
             SELECT   USERID
