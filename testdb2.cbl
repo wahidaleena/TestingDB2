@@ -1,17 +1,17 @@
-IDENTIFICATION DIVISION.
-       PROGRAM-ID.    TEST DB2.
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID.    TESTDB2.
       *SECURITY.      OPERACTION, REVISION, AND DISTRIBUTION
       *            OF THIS PROGRAM BY WRITTEN AUTHORIZATION
       *            OF THE ABOVE INSTALLACTION ONLY.
       *DATE-WRITTEN.  09/12/19.
       *DATE-COMPLETED.
       **************************CC109**********************************
-       
+
        PROCEDURE DIVISION.
 
        0000-INITIALIZE-PARA.
 
-          
+
         EXEC SQL
             DECLARE  FOODSTMP_S CURSOR FOR       
             SELECT   DISTINCT FD_STMP                  
@@ -32,7 +32,14 @@ IDENTIFICATION DIVISION.
 
         END-EXEC.
 
-      1000-INITIALIZE-PARA.
+       EXEC SQL
+            FETCH    FOODSTMP_S
+            INTO    :CPN_ROG,
+                    :CPN_CPN_ADJ_IND
+
+            END-EXEC.
+
+       1000-INITIALIZE-PARA.
        EXEC SQL
             SELECT   USERID
             INTO    RTL_USERID
@@ -123,9 +130,9 @@ IDENTIFICATION DIVISION.
 
 
        END-EXEC.
-		
-	  2000-INITIALIZE-PARA.
-	   EXEC SQL
+
+       2000-INITIALIZE-PARA.
+       EXEC SQL
             DELETE
                 FROM  COUPON
                 WHERE ROG         = :X-ROG
@@ -181,6 +188,6 @@ IDENTIFICATION DIVISION.
        END-EXEC.
        
        6000-FINAL-COUNT.
-          CLOSE INFILE
-                OUT.
-          DISPLAY "-----------------------------------------------------".
+        CLOSE INFILE
+              OUT.
+        DISPLAY "-----------------------------------------------------".
